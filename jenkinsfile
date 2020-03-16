@@ -1,22 +1,20 @@
-pipeline{
+pipeline {
    agent any
 
    stages {
-      stage('Build') {
+      stage('git checkout') {
          steps {
-            // Get some code from a GitHub repository
             git 'https://github.com/shaikshareefmastan/testrepo.git'
-             }
+         }
       stage('Build application') {
          steps {
-             sh 'cd /home/tomcat/workspace/testjob/Trading-UI-master'
-             sh 'npm install'
-             sh 'npm run build'
-             sh 'cp -R build /opt/apache-tomcat-7.0.100/webapps'
-             sh '/opt/apache-tomcat-7.0.100/bin/startup.sh'
-
-         }  
-        }
+            sh 'cd /home/tomcat/workspace/testjob/Trading-UI-master'
+            sh 'npm install'
+            sh 'npm run build'
+            sh 'cp -R build /opt/apache-tomcat-7.0.100/webapps'
+            sh '/opt/apache-tomcat-7.0.100/bin/startup.sh'
+         }
       }
    }
 }
+
