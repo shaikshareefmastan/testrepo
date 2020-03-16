@@ -1,6 +1,7 @@
 pipeline {
-   agent slave
-
+   agent {
+       slave
+     }
    stages {
       stage('git checkout') {
          steps {
