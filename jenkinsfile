@@ -1,16 +1,16 @@
-pipeline {
+pipeline{
    agent any
 
-   stages {
-      stage('git checkout') {
-         steps {
+   stages{
+      stage('git checkout'){
+         steps{
             // Get some code from a GitHub repository
             git branch: 'master',
                 credentialsId: '06fce0b7-b7a3-47da-93f3-185e4bcd5f1b',
                 url: 'https://github.com/shaikshareefmastan/testrepo.git'
              }
       stage('Build application'){
-         steps {
+         steps{
              sh 'npm install'
              sh 'npm build'
          }  
