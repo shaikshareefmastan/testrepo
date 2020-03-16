@@ -6,6 +6,7 @@ pipeline {
          steps {
             git 'https://github.com/shaikshareefmastan/testrepo.git'
          }
+       }
       stage('Build application') {
          steps {
             sh 'cd /home/tomcat/workspace/testjob/Trading-UI-master'
@@ -16,5 +17,4 @@ pipeline {
          }
       }
    }
-}
 }
