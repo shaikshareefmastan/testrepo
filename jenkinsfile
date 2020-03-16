@@ -1,0 +1,29 @@
+pipeline {
+   agent slave
+
+   stages {
+      stage('git checkout') {
+         steps {
+            // Get some code from a GitHub repository
+            git branch: 'master',
+                credentialsId: '06fce0b7-b7a3-47da-93f3-185e4bcd5f1b',
+                url: 'https://github.com/shaikshareefmastan/testrepo.git'
+             }
+      stage('Build application'){
+         steps {
+             sh 'npm install'
+             sh 'npm build'
+         }  
+         }
+                 stage('Install tomcat'){
+                    steps{
+                                  sh 'cd /home/tomcat/workspace/testjob/Trading-UI-master'
+                                  sh 'npm install'
+                                  sh 'npm run build'
+                                  sh 'cp -R build /opt/apache-tomcat-7.0.100/webapps'
+                                  sh '/opt/apache-tomcat-7.0.100/bin/startup.sh'
+                               }
+                 }
+      }
+   }
+
