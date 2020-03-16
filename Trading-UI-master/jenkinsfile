@@ -10,7 +10,7 @@ pipeline {
        }
       stage('Build application') {
          steps {
-            sh 'cd /home/tomcat/workspace/testjob/Trading-UI-master'
+            sh 'cd /home/tomcat/workspace/pipeline/Trading-UI-master'
             sh 'npm install'
             sh 'npm run build'
             sh 'cp -R build /opt/apache-tomcat-7.0.100/webapps'
